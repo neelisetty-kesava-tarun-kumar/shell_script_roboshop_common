@@ -11,6 +11,7 @@ Y='\e[0;33m'
 N='\e[0m'
 Start_Time=$(date +%s)
 
+mkdir -p $LOGS_FOLDER
 
 echo "$(date "+%Y-%m-%d %H:%M:%S") | Script started at: $(date "+%Y-%m-%d %H:%M:%S") UTC %Y" | tee -a $LOGS_FILE
 
@@ -20,7 +21,6 @@ check_root(){
         exit 1 
     fi
 }
-mkdir -p $LOGS_FOLDER
 
 VALIDATE(){
     if [ $1 -ne 0 ]; then
