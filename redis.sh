@@ -17,3 +17,5 @@ VALIDATE $? "Updating Redis configuration to allow remote connections and disabl
 systemctl enable redis  &>> $LOGS_FILE
 systemctl start redis  #Starting Redis service
 VALIDATE $? "Enable and Starting Redis service" #Enabling and starting the Redis service to ensure it is running correctly
+
+print_total_time
