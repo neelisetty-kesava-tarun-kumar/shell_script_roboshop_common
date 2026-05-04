@@ -9,8 +9,8 @@ R='\e[0;31m'
 G='\e[0;32m'
 Y='\e[0;33m'
 N='\e[0m'
-Start_Time=$(date +%s)
 SCRIPT_DIR=$PWD
+Start_Time=$(date +%s)
 MONGODB_HOST="mongodb.kesavatarun.in"
 
 mkdir -p $LOGS_FOLDER
