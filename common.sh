@@ -31,6 +31,17 @@ VALIDATE(){
     fi
 }
 
+nodejs_setup(){
+    dnf module disable nodejs -y &>> $LOGS_FILE
+    VALIDATE $? "Disabling NodeJS module"
+
+    dnf module enable nodejs:20 -y &>> $LOGS_FILE
+    VALIDATE $? "Enabling NodeJS 20 module"
+
+    dnf install nodejs -y &>> $LOGS_FILE
+    VALIDATE $? "Installing NodeJS"
+}
+
 print_total_time(){
     END_Time=$(date +%s)
     TOTAL_TIME=$(( $END_Time - $Start_Time ))
