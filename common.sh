@@ -10,6 +10,7 @@ G='\e[0;32m'
 Y='\e[0;33m'
 N='\e[0m'
 Start_Time=$(date +%s)
+SCRIPT_DIR=$PWD
 MONGODB_HOST="mongodb.kesavatarun.in"
 
 mkdir -p $LOGS_FOLDER
@@ -80,6 +81,11 @@ system_setup(){
     systemctl enable $APP_NAME &>> $LOGS_FILE
     systemctl start $APP_NAME #Starting the $APP_NAME service using systemctl, which allows the application to run in the background and be automatically started on system boot.
     VALIDATE $? "Starting $APP_NAME service"
+}
+
+app_restart(){
+    systemctl restart $APP_NAME
+    VALIDATE $? "Restarting $APP_NAME service" #Restarting the $APP_NAME service to apply any changes made to the application or its configuration, ensuring that the latest version of the application is running.
 }
 
 print_total_time(){

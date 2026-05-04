@@ -21,8 +21,7 @@ if [ $INDEX -le 0 ]; then
     mongosh --host $MONGODB_HOST </app/db/master-data.js &>> $LOGS_FILE
     VALIDATE $? "Inserting data into MongoDB"
 else
-    echo -e "$Y Catalogue database already exists, skipping data insertion into MongoDB $N" | tee -a $LOGS_FILE
+    echo -e "$(date "+%Y-%m-%d %H:%M:%S") | $Y Catalogue database already exists, skipping data insertion into MongoDB $N" | tee -a $LOGS_FILE
 fi
 
-systemctl restart catalogue
-VALIDATE $? "Restarting catalogue service"  
+app_restart
