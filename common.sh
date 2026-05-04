@@ -44,7 +44,7 @@ nodejs_setup(){
     VALIDATE $? "Installing NodeJS" #Installing NodeJS
 
     npm install &>> $LOGS_FILE
-    VALIDATE $? "Installing NodeJS dependencies for catalogue" #Installing the NodeJS dependencies for the application.
+    VALIDATE $? "Installing NodeJS dependencies for $APP_NAME" #Installing the NodeJS dependencies for the application.
 
 }
 
