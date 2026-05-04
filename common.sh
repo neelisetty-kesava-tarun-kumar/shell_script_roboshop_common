@@ -13,7 +13,7 @@ Start_Time=$(date +%s)
 
 mkdir -p $LOGS_FOLDER
 
-echo "$(date "+%Y-%m-%d %H:%M:%S") | Script started at: $(date "+%Y-%m-%d %H:%M:%S") UTC "+%Y"" | tee -a $LOGS_FILE
+echo "$(date "+%Y-%m-%d %H:%M:%S") | Script started at: $(date "+%Y-%m-%d %H:%M:%S")" | tee -a $LOGS_FILE
 
 check_root(){
     if [ $USERID -ne 0 ]; then
