@@ -19,7 +19,7 @@ INDEX=$(mongosh --host $MONGODB_HOST --quiet --eval 'db.getMongo().getDBNames().
 if [ $INDEX -le 0 ]; then
     #echo -e "$Y catalogue database does not exist, inserting the data into MongoDB $N" | tee -a $LOGS_FILE
     mongosh --host $MONGODB_HOST </app/db/master-data.js &>> $LOGS_FILE
-    VALIDATE $? "Inserting data into MongoDB"
+    VALIDATE $? "Inserting data into MongoDB or Loading Products data into MongoDB" #Inserting data into MongoDB or Loading Products data into MongoDB to ensure that the application has the necessary data to function correctly.
 else
     echo -e "$(date "+%Y-%m-%d %H:%M:%S") | $Y Catalogue database already exists, skipping data insertion into MongoDB $N" | tee -a $LOGS_FILE
 fi
