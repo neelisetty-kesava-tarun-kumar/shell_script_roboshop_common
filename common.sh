@@ -12,6 +12,7 @@ N='\e[0m'
 SCRIPT_DIR=$PWD
 Start_Time=$(date +%s)
 MONGODB_HOST="mongodb.kesavatarun.in"
+MYSQL_HOST="mysql.kesavatarun.in"
 
 mkdir -p $LOGS_FOLDER
 
@@ -46,6 +47,18 @@ nodejs_setup(){
     npm install &>> $LOGS_FILE
     VALIDATE $? "Installing NodeJS dependencies for $APP_NAME" #Installing the NodeJS dependencies for the application.
 
+}
+
+java_setup(){
+    dnf install maven -y &>> $LOGS_FILE
+    VALIDATE $? "Installing Maven" #Installing maven to build the Java application
+
+    cd /app 
+    mvn clean package &>> $LOGS_FILE #Cleaning the package 
+    VALIDATE $? "Building the $APP_NAME code using maven" 
+
+    mv target/$APP_NAME-1.0.jar $APP_NAME.jar #Moving the jar file to the specific directory
+    VALIDATE $? "Moving the $APP_NAME jar file"
 }
 
 app_setup(){
