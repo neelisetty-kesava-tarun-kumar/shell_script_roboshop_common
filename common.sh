@@ -61,6 +61,15 @@ java_setup(){
     VALIDATE $? "Moving the $APP_NAME jar file"
 }
 
+python_setup(){
+    dnf install python3 gcc python3-devel -y &>> $LOGS_FILE #Installing Python3 etc..
+    VALIDATE $? "Installing Python3 and dependencies"
+
+    cd /app
+    pip3 install -r requirements.txt &>> $LOGS_FILE #Installing python dependencies for the application using pip3 and the requirements.txt file, which contains a list of all the required Python packages and their versions. This ensures that the application has all the necessary dependencies installed to run correctly.
+    VALIDATE $? "Installing Python dependencies for $APP_NAME"
+}
+
 app_setup(){
     id roboshop &>> $LOGS_FILE
     if [ $? -ne 0 ]; then
